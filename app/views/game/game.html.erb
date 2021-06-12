@@ -1,0 +1,15 @@
+<div class="page" align="center">
+  <h2>Game</h2>
+
+  <div class="game">
+    <h3>Params are:</h3>
+    <table>
+      <% params.each do |k,v| %>
+        <tr>
+          <td><%= k.to_s %></td>
+          <td><%= v.to_s %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="page" align="center">
+
+  <h1>Chandler's Dumb States Game</h1>
+
+  <div class="game-select" align="center">
+  <p>Select your game options:</p>
+  <p>
+    <%= form_with url: 'game', action: :play_game, method: :get do |form| %>
+      <div>
+        <%= form.label :region, 'Region' %>
+        <% game_regions = CDSG.regions.map do |r|
+             [r.split('_').map(&:capitalize).join(' '), r]
+          end
+        %>
+        <%= form.select :region, game_regions, selected: "United States" %>
+      </div>
+      <div>
+        <%= form.label :capitals_mode, 'Play in Capitals mode' %>
+        <%= form.check_box :capitals_mode %>
+      </div>
+      <div>
+        <%= form.label :hard_mode, 'Play in Hard mode' %>
+        <%= form.check_box :hard_mode %>
+      </div>
+      <div>
+       <p><%= form.submit "Play" %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
