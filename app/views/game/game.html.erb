@@ -37,7 +37,7 @@
     <p>
       <%= form_with url: '/game/guess', method: :get do |form| %>
         <div class="form-row">
-          <%= form.text_field :guess %>
+          <%= form.text_field :guess, :autofocus => true %>
           <%= form.hidden_field :region, value: params[:region] %>
           <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
           <%= form.hidden_field :hard_mode, value: params[:capitals_mode] %>
