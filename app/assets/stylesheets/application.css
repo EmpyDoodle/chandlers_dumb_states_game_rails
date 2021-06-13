@@ -13,10 +13,19 @@
  *= require_tree .
  *= require_self
  */
+td.game-select {
+  padding: 5px;
+}
+
+td.game-select-left {
+  td.game-select;
+  text-align: right;
+}
 
 td.game-mode {
  border: 1px solid black;
   padding: 5px;
+  text-align: center;
 }
 
 table.game-results {

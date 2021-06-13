@@ -97,7 +97,7 @@ class GameController < ApplicationController
        url_params << "hint_count=#{params[:hint_count]}"
      end
      redirect_to [
-       (params[:capitals_mode] ? "/game/capitals?" : "/game?"),
+       (params[:capitals_mode] == '1' ? "/game/capitals?" : "/game?"),
        url_params.join('&')
      ].join
     end
