@@ -1,15 +1,96 @@
 <div class="page" align="center">
   <h2>Game</h2>
+  <p>
+    <table border=1>
+      <tr>
+        <td class="game-mode">Region</td>
+        <td class="game-mode">
+          <%=
+            params[:region].to_s.split('_').map(&:capitalize).join(' ')
+          %>
+        </td>
+      </tr>
+      <tr>
+        <td class="game-mode">Capitals mode</td>
+        <td class="game-mode">
+          <%=
+            params[:capitals_mode].gsub('0', 'Off').gsub('1', 'On')
+          %>
+        </td>
+      </tr>
+      <tr>
+        <td class="game-mode">Hard mode</td>
+        <td class="game-mode">
+          <%=
+            params[:hard_mode].gsub('0', 'Off').gsub('1', 'On')
+          %>
+        </td>
+      </tr>
+    </table>
+  </p>
+  <p>
+    <hr />
+  </p>
 
   <div class="game">
-    <h3>Params are:</h3>
-    <table>
-      <% params.each do |k,v| %>
+   <p>&nbsp;</p>
+    <p>
+      <%= form_with url: '/game/guess', method: :get do |form| %>
+        <div class="form-row">
+          <%= form.text_field :guess %>
+          <%= form.hidden_field :region, value: params[:region] %>
+          <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+          <%= form.hidden_field :hard_mode, value: params[:capitals_mode] %>
+          <%= form.hidden_field :results, value: @cdsg.results %>
+          <%= form.submit 'Guess' %>
+        </div>
+      <% end %>
+    </p>
+    <% if params[:hint] %>
+      <p>
+        <table class="game-results">
+          <tr>
+            <td class="game-results">Hint: <strong><%= params[:hint] %></td>
+          </tr>
+        </table>
+      </p>
+    <% end %>
+    <p>
+      <%= form_with url: '/game/hint', method: :get do |form| %>
+        <%= form.hidden_field :region, value: params[:region] %>
+        <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+        <%= form.hidden_field :hard_mode, value: params[:capitals_mode] %>
+        <%= form.hidden_field :results, value: @cdsg.results %>
+        <%= form.hidden_field :hint, value: true %>
+        <% hint_count = (params[:hint_count] ? params[:hint_count].to_i + 1 : 1) %>
+        <%= form.hidden_field :hint_count, value: hint_count.to_s %>
+        <%= form.submit "Hint #{hint_count.to_s}" %>
+      <% end %>
+    </p>
+  </div>
+  <div style="float:center, width: 1px"
+  <div class="game-results">
+    <table class="game-results">
+      <thead>
+        <th class="game-results">Results</td>
+      </thead>
+      <tr><td class="game-results"><hr /></td></tr>
+      <% @cdsg.results.sort.each do |r| %>
         <tr>
-          <td><%= k.to_s %></td>
-          <td><%= v.to_s %></td>
+          <td class="game-results"><%= r.to_s.chomp %></td>
         </tr>
       <% end %>
+      <tr><td class="game-results"><hr /></td></tr>
+      <tr>
+        <td class="game-results"><%= @cdsg.results.length.to_s %> / <%= @cdsg.data.length.to_s %></td>
+      </tr>
     </table>
   </div>
+
+  <p>
+    <%= form_with url: '/', method: :get do |form| %>
+      <%= form.hidden_field :quit, value: true %>
+      <%= form.submit "Quit Game" %>
+    <% end %>
+  </p>
 </div>

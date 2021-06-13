@@ -17,8 +17,9 @@ class CDSG
     @region = region
     capitals = false if capitals == '0'
     @capitals_mode = capitals
-    hard = 0 if hard == '0'
+    hard = false if hard == '0'
     @hard_mode = hard
+    @results = Array.new
     @data.delete_if { |k,v| v['independent'] == false } unless @hard_mode
   end
 
