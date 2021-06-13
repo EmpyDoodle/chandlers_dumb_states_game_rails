@@ -18,7 +18,7 @@ td.game-select {
 }
 
 td.game-select-left {
-  td.game-select;
+  padding: 5px;
   text-align: right;
 }
 
