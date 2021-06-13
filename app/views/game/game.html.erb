@@ -41,7 +41,7 @@
           <%= form.hidden_field :region, value: params[:region] %>
           <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
           <%= form.hidden_field :hard_mode, value: params[:capitals_mode] %>
-          <%= form.hidden_field :results, value: @cdsg.results %>
+          <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
           <%= form.submit 'Guess' %>
         </div>
       <% end %>
@@ -60,7 +60,7 @@
         <%= form.hidden_field :region, value: params[:region] %>
         <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
         <%= form.hidden_field :hard_mode, value: params[:capitals_mode] %>
-        <%= form.hidden_field :results, value: @cdsg.results %>
+        <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
         <%= form.hidden_field :hint, value: true %>
         <% hint_count = (params[:hint_count] ? params[:hint_count].to_i + 1 : 1) %>
         <%= form.hidden_field :hint_count, value: hint_count.to_s %>

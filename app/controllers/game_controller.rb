@@ -8,7 +8,7 @@ class GameController < ApplicationController
   def guess
     guess = guess_params.to_h.values.first.capitalize
     @cdsg = cdsg
-    @cdsg.results << guess if @cdsg.correct_state?(guess)
+    @cdsg.results << @cdsg.correct_state?(guess) if @cdsg.correct_state?(guess)
     if @cdsg.results.length == @cdsg.data.length
       redirect_to "/game/complete"
     else
