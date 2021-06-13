@@ -19,7 +19,7 @@ class CDSG
     @capitals_mode = capitals
     hard = false if hard == '0'
     @hard_mode = hard
-    @results = Array.new
+    @results = ( @capitals_mode ? Hash.new : Array.new)
     @data.delete_if { |k,v| v['independent'] == false } unless @hard_mode
   end
 
@@ -174,7 +174,6 @@ class CDSG
 
   def play_capitals()
     puts '***** Playing in Capitals Mode *****'
-    @results = Hash.new
     hint_count = 0
     @data.each_key.to_a.select { |d| @data[d]['capital'] != '#' }.shuffle.each do |k|
       begin
