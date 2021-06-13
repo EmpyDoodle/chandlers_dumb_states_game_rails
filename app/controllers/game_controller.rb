@@ -10,7 +10,7 @@ class GameController < ApplicationController
     @cdsg = cdsg
     @cdsg.results << @cdsg.correct_state?(guess) if @cdsg.correct_state?(guess)
     if @cdsg.results.length == @cdsg.data.length
-      redirect_to "/game/complete"
+      redirect_to "/game/complete?region=#{params[:region]}"
     else
       game_redirect
     end

@@ -1,7 +1,11 @@
 <div class="page" align="center">
   <h2>Game Complete!</h2>
   <p>
-    <img alt="Way to go, champ!" src="https://media.giphy.com/media/IygGM8SXWLem8PkXIh/giphy.gif" />
+    <% if params[:region] == 'celery' %>
+      <img src="https://media.giphy.com/media/3E7VSIvhqvMYkbwxVq/giphy.gif" alt="Bravo, you have the lead in... vegatables" />
+    <% else %>
+      <img alt="Way to go, champ!" src="https://media.giphy.com/media/IygGM8SXWLem8PkXIh/giphy.gif" />
+    <% end %>
   </p>
   <p>
     <%= form_with url: '/', method: :get do |form| %>

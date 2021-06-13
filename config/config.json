@@ -7,6 +7,9 @@
     "asia": {
       "capitals_mode": true
     },
+    "celery" :{
+      "capitals_mode": false
+    },
     "europe": {
       "capitals_mode": true
     },
