@@ -1,4 +1,10 @@
 {
+  "Abkhazia": {
+    "abbreviation": "#",
+    "aliases": [],
+    "independent": false,
+    "capital": "Sukhumi"
+  },
   "Aland Islands": {
     "abbreviation": "AX",
     "aliases": ["Aland"],
@@ -22,6 +28,12 @@
     "aliases": [],
     "independent": true,
     "capital": "Andorra La Vella"
+  },
+  "Artsakh": {
+    "abbreviation": "#",
+    "aliases": ["Nagorno-Karabakh", "Nagorno-Karabakh Republic"],
+    "independent": false,
+    "capital": "Stepanakert"
   },
   "Armenia": {
     "abbreviation": "AM",
@@ -165,7 +177,7 @@
     "abbreviation": "FO",
     "aliases": ["Faeroe Islands"],
     "independent": false,
-    "capital": "Torshavn"
+    "capital": "Tórshavn"
   },
   "Gibraltar": {
     "abbreviation": "GI",
@@ -177,7 +189,7 @@
     "abbreviation": "GG",
     "aliases": [],
     "independent": false,
-    "capital": "#"
+    "capital": "Saint Peter Port"
   },
   "Isle of Man": {
     "abbreviation": "IM",
@@ -237,7 +249,7 @@
     "abbreviation": "MD",
     "aliases": [],
     "independent": true,
-    "capital": "Chisinau"
+    "capital": "Chișinău"
   },
   "Monaco": {
     "abbreviation": "MC",
@@ -329,6 +341,12 @@
     "independent": true,
     "capital": "Ljubljana"
   },
+  "South Ossetia": {
+    "abbreviation": "#",
+    "aliases": [],
+    "independent": false,
+    "capital": "Tskhinvali"
+  },
   "Spain": {
     "abbreviation": "ES",
     "aliases": [],
@@ -353,6 +371,12 @@
     "independent": true,
     "capital": "Bern"
   },
+  "Transnistria": {
+    "abbreviation": "#",
+    "aliases": ["Pridnestrovian Moldavian Republic"],
+    "independent": false,
+    "capital": "Tiraspol"
+  },
   "Turkey": {
     "abbreviation": "TR",
     "aliases": [],
@@ -363,7 +387,7 @@
     "abbreviation": "UA",
     "aliases": [],
     "independent": true,
-    "capital": "Kiev"
+    "capital": "Kyiv"
   },
   "United Kingdom": {
     "abbreviation": "UK",

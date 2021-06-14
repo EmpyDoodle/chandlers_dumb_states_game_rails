@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'json'
+require 'i18n'
 
 $app_root = File.expand_path('..', File.dirname(__FILE__))
 $cfg = File.join($app_root, 'config')
@@ -30,7 +31,9 @@ class CDSG
 
   def match_guess(guess, answer)
     ## Needs improving to allow imperfect spelling!
-    guess.downcase.gsub(/(\.|\')/, '').gsub('-', ' ').gsub(/\A[sS][tT]/, 'Saint') == answer.downcase.gsub(/(\.|\')/, '').gsub('-', ' ') ? answer : false
+    xguess = I18n.transliterate(guess.downcase.gsub(/(\.|\')/, '').gsub('-', ' ').gsub(/\A[sS][tT]/, 'Saint'))
+    xanswer = I18n.transliterate(answer.downcase.gsub(/(\.|\')/, '').gsub('-', ' '))
+    xguess == xanswer ? answer : false
     #return answer if guess.downcase == answer.downcase
     #rexpr = guess.chars.map { |c| "(#{c}?)"}
     #(guess.chars.map { |c| answer.downcase.include?(c.downcase) }.count(true)) >= answer.length / 2 ? answer : false

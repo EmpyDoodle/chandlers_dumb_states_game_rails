@@ -70,7 +70,7 @@
     "abbreviation": "GU",
     "aliases": [],
     "independent": false,
-    "capital": "Hagatna"
+    "capital": "Hagåtña"
   },
   "Hawaii": {
     "abbreviation": "#",
@@ -106,7 +106,7 @@
     "abbreviation": "NC",
     "aliases": [],
     "independent": false,
-    "capital": "Noumea"
+    "capital": "Nouméa"
   },
   "New Zealand": {
     "abbreviation": "NZ",
@@ -117,7 +117,7 @@
   "Niue": {
     "abbreviation": "NU",
     "aliases": [],
-    "independent": true,
+    "independent": false,
     "capital": "Alofi"
   },
   "Norfolk Island": {
@@ -156,7 +156,7 @@
     "abbreviation": "PN",
     "aliases": [
       "Pitcairn Islands",
-      "Pitcarin Island",
+      "Pitcairn Island",
       "Henderson Island",
       "Ducie Island",
       "Oeno Island"
@@ -217,7 +217,7 @@
       "Futuna"
     ],
     "independent": false,
-    "capital": "Mata-Utu"
+    "capital": "Mata Utu"
   },
   "West Papua": {
     "abbreviation": "#",

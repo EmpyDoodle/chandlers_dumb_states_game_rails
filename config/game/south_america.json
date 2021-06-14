@@ -15,7 +15,7 @@
     "abbreviation": "BR",
     "aliases": [],
     "independent": true,
-    "capital": "Brasilia"
+    "capital": "Brasília"
   },
   "Chile": {
     "abbreviation": "CL",
@@ -27,7 +27,7 @@
     "abbreviation": "CO",
     "aliases": [],
     "independent": true,
-    "capital": "Bogota"
+    "capital": "Bogotá"
   },
   "Ecuador": {
     "abbreviation": "EC",
@@ -57,7 +57,7 @@
     "abbreviation": "PY",
     "aliases": [],
     "independent": true,
-    "capital": "Asuncion"
+    "capital": "Asunción"
   },
   "Peru": {
     "abbreviation": "PE",

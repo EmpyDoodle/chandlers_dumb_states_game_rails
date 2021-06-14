@@ -1,4 +1,10 @@
 {
+  "Abkhazia": {
+    "abbreviation": "#",
+    "aliases": [],
+    "independent": false,
+    "capital": "Sukhumi"
+  },
   "Afghanistan": {
     "abbreviation": "AF",
     "aliases": [],
@@ -10,6 +16,12 @@
     "aliases": ["Akrotiri", "Dhekelia"],
     "independent": false,
     "capital": "Episkopi"
+  },
+  "Artsakh": {
+    "abbreviation": "#",
+    "aliases": ["Nagorno-Karabakh", "Nagorno-Karabakh Republic"],
+    "independent": false,
+    "capital": "Stepanakert"
   },
   "Armenia": {
     "abbreviation": "AM",
@@ -189,7 +201,7 @@
     "abbreviation": "MV",
     "aliases": ["The Maldives"],
     "independent": true,
-    "capital": "Male"
+    "capital": "Malê"
   },
   "Mongolia": {
     "abbreviation": "MN",
@@ -275,11 +287,17 @@
     "independent": true,
     "capital": "Seoul"
   },
+  "South Ossetia": {
+    "abbreviation": "#",
+    "aliases": [],
+    "independent": false,
+    "capital": "Tskhinvali"
+  },
   "Sri Lanka": {
     "abbreviation": "LK",
     "aliases": [],
     "independent": true,
-    "capital": "Colombo"
+    "capital": "Kotte"
   },
   "Syria": {
     "abbreviation": "SY",

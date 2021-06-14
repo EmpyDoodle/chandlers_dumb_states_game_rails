@@ -35,13 +35,13 @@
     "abbreviation": "BI",
     "aliases": [],
     "independent": true,
-    "capital": "Bujumbura"
+    "capital": "Gitega"
   },
   "Cameroon": {
     "abbreviation": "CM",
     "aliases": [],
     "independent": true,
-    "capital": "Yaounde"
+    "capital": "Yaoundé"
   },
   "Canary Islands": {
     "abbreviation": "#",
@@ -57,10 +57,10 @@
     "independent": false,
     "capital": "Las Palmas"
   },
-  "Cape Verde": {
+  "Cabo Verde": {
     "abbreviation": "CV",
     "aliases": [
-      "Cabo Verde"
+      "Cape Verde"
     ],
     "independent": true,
     "capital": "Praia"
@@ -95,7 +95,7 @@
     "abbreviation": "Ivory Coast",
     "aliases": [],
     "independent": true,
-    "capital": "Abidjan"
+    "capital": "Yamoussoukro"
   },
   "Democratic Republic of the Congo": {
     "abbreviation": "CD",
@@ -324,14 +324,14 @@
     "independent": false,
     "capital": "Jamestown"
   },
-  "Sao Tome and Principe": {
+  "São Tomé and Príncipe": {
     "abbreviation": "ST",
     "aliases": [
       "Sao Tome",
       "Principe"
     ],
     "independent": true,
-    "capital": "Sao Tome"
+    "capital": "São Tomé"
   },
   "Senegal": {
     "abbreviation": "SN",
@@ -358,6 +358,12 @@
     "aliases": [],
     "independent": true,
     "capital": "Mogadishu"
+  },
+  "Somaliland": {
+    "abbreviation": "#",
+    "aliases": [],
+    "independent": false,
+    "capital": "Hargeisa"
   },
   "South Africa": {
     "abbreviation": "SA",
@@ -394,7 +400,7 @@
       "Togolese Republic"
     ],
     "independent": true,
-    "capital": "Lome"
+    "capital": "Lomé"
   },
   "Tunisia": {
     "abbreviation": "TN",
@@ -410,9 +416,9 @@
   },
   "Western Sahara": {
     "abbreviation": "EH",
-    "aliases": [],
+    "aliases": ["Saharawi", "Sahrawi Republic", "Sahrawi Arab Democratic Republic", "SADR"],
     "independent": true,
-    "capital": "Al Aaiun"
+    "capital": "El Aaiún"
   },
   "Zambia": {
     "abbreviation": "ZM",

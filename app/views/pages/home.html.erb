@@ -21,6 +21,7 @@
         </td>
         <td class="game-select">
           <%= form.check_box :capitals_mode %>
+          <%= form.label :capitals_mode, '(where multiples, the official/administrative capital will be used)' %>
         </td>
       </tr>
       <tr>
@@ -29,7 +30,7 @@
         </td>
         <td class="game-select">
           <%= form.check_box :hard_mode %>
-          <%= form.label :hard_mode, '(includes dependent territories)' %>
+          <%= form.label :hard_mode, '(includes dependent territories with capitals or ISO3166 recognition)' %>
         </td>
       </tr>
       <tr>

@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails-ified version of https://github.com/empydoodle/chandlers_dumb_states_game
 
-Things you may want to cover:
+Various geographical location quizzes to destroy my wife at (or vice versa).
 
-* Ruby version
+Information gleaned from various sources, namely Wikipedia:-
 
-* System dependencies
++ Europe: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Europe
++ Africa: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa
++ Asia: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Asia
++ Ocenia: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Oceania
++ N America: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_North_America
++ S America: https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_South_America
 
-* Configuration
++ UK Counties: https://www.jamesharding.net/list-of-uk-counties/
++ US States / Territories: https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Updated recently using: https://en.wikipedia.org/wiki/List_of_national_capitals
