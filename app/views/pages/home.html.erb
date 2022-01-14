@@ -1,45 +1,30 @@
-<div class="game-select" align="center">
-  <h3>Select your game options:</h3>
-  <table class="game-select">
-    <%= form_with url: 'game', method: :get do |form| %>
-      <tr>
-        <td class="game-select-left">
-          <%= form.label :region, 'Region' %>
-        </td>
-        <td class="game-select">
-          <%
-            game_regions = CDSG.regions.map do |r|
-              [r.split('_').map(&:capitalize).join(' '), r]
-            end
-          %>
-          <%= form.select :region, game_regions, selected: 'united_states' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-select-left">
+<div class="form">
+  <div class="container">
+    <div class="row">
+    <h5>Select your game options:</h5>
+    <div class="row">
+      <%= form_with url: 'game', method: :get do |form| %>
+        <div class="input-field col s12">
+          <div class="select-wrapper">
+        <%
+          game_regions = CDSG.regions.map do |r|
+            [r.split('_').map(&:capitalize).join(' '), r]
+          end
+        %>
+      <%= form.select :region, game_regions, selected: 'united_states' %>
+          </div>
+        <i class="material-icons">public</i><%= form.label :region, 'Region' %>
+        </div>
+    </div>
           <%= form.label :capitals_mode, 'Capitals mode' %>
-        </td>
-        <td class="game-select">
           <%= form.check_box :capitals_mode %>
           <%= form.label :capitals_mode, '(where multiples, the official/administrative capital will be used)' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-select-left">
           <%= form.label :hard_mode, 'Hard mode' %>
-        </td>
-        <td class="game-select">
           <%= form.check_box :hard_mode %>
           <%= form.label :hard_mode, '(includes dependent territories with capitals or ISO3166 recognition)' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-select" colspan="2" align="center">
           <%= form.submit 'Play' %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+        <% end %>
+    </div>
 
   <% if params[:quit] %>
     <p>
@@ -48,3 +33,9 @@
   <% end %>
 
 </div>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+  </script>

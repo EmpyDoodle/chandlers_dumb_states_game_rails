@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import '../styles/styles'
+import 'materialize-css'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
