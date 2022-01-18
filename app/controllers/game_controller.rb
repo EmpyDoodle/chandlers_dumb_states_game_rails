@@ -7,7 +7,7 @@ class GameController < ApplicationController
   end
 
   def guess
-    guess = guess_params.to_h.values.first.capitalize
+    guess = guess_params[:guess].capitalize
     @cdsg = cdsg
     @cdsg.results << @cdsg.correct_state?(guess) if @cdsg.correct_state?(guess)
     if @cdsg.results.length == @cdsg.data.length

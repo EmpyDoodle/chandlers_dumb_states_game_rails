@@ -1,79 +1,75 @@
-<div class="page" align="center">
-  <h2>Game</h2>
-  <p>
-    <table border=1>
-      <tr>
-        <td class="game-mode">Region</td>
-        <td class="game-mode">
-          <%=
-            params[:region].to_s.split('_').map(&:capitalize).join(' ')
-          %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-mode">Capitals mode</td>
-        <td class="game-mode">
-          <%=
-            params[:capitals_mode].gsub('0', 'Off').gsub('1', 'On')
-          %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-mode">Hard mode</td>
-        <td class="game-mode">
-          <%=
-            params[:hard_mode].gsub('0', 'Off').gsub('1', 'On')
-          %>
-        </td>
-      </tr>
-    </table>
-  </p>
-  <p>
-    <hr />
-  </p>
-
-  <div class="game">
-   <p>&nbsp;</p>
-   <p>What is the capital of <strong><%= @question %></strong>?</p>
-   <p>&nbsp;</p>
-    <p>
-      <%= form_with url: '/game/cap_guess', method: :get do |form| %>
-        <div class="form-row">
-          <%= form.text_field :guess, :autofocus => true %>
-          <%= form.hidden_field :region, value: params[:region] %>
-          <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
-          <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
-          <%= form.hidden_field :results, value: @cdsg.results.each_key.to_a.join(',') %>
-          <%= form.hidden_field :question, value: @question %>
-          <%= form.submit 'Guess' %>
+<%= render 'game_header' %>
+<% this_question = ['What is the capital of ',
+                     content_tag(:strong, @question),
+                     '?'
+                   ].join('') %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="container">
+        <div class="section">
+          <%= render 'game_opts_table' %>
         </div>
-      <% end %>
-    </p>
+        <div class="section center-align">
+          <div class="card horizontal">
+            <div class="card-content">
+              <span class="card-title">
+                <i class="material-icons">help_outline</i>
+              </span>
+              <h5>What is the capital of</h5>
+              <h5><strong><%= @question %></strong>?</h5>
+            </div>
+          </div>
+        </div>
+        <div class="section center-align">
+          <%= form_with url: '/game/cap_guess', method: :get do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Enter your guess..."
+                       class="validate"
+                       id="guess"
+                       name="guess"
+                       type="text"
+                       autocomplete="off"
+                       autofocus />
+                <label for="guess">What is the capital of <strong><%= @question %></strong>?</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <button class="btn waves-effect waves-light grey" onClick="window.location.reload()">
+                  <i class="material-icons right">skip_next</i>Next
+                </button>
+              </div>
+              <div class="col s6">
+                <%= form.hidden_field :region, value: params[:region] %>
+                <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+                <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
+                <%= form.hidden_field :results, value: @cdsg.results.each_key.to_a.join(',') %>
+                <%= form.hidden_field :question, value: @question %>
+                <button class="btn waves-effect waves-light" type="submit" name="commit">
+                  <i class="material-icons right">send</i>Guess
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="row center-align">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h5>Results <small>(<%= @cdsg.results.length.to_s %> / <%= @cdsg.data.length.to_s %>)</small></h5>
+          </li>
+          <% @cdsg.results.sort_by {|k,v| k}.each do |q,a| %>
+            <li class="collection-item">
+              The capital of <strong><%= q.to_s.chomp %></strong> is <strong><u><%= a.to_s.chomp %></u></strong>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-
-  <div class="game-results">
-    <table class="game-results">
-      <thead>
-        <th colspan="2" class="game-results">Results</th>
-      </thead>
-      <tr><td colspan="2" class="game-results"><hr /></td></tr>
-      <% @cdsg.results.sort_by {|k,v| k}.each do |q,a| %>
-        <tr>
-          <td class="game-results"><%= q.to_s.chomp %></td>
-          <td class="game-results"><%= a.to_s.chomp %></td>
-        </tr>
-      <% end %>
-      <tr><td colspan="2" class="game-results"><hr /></td></tr>
-      <tr>
-        <td colspan="2" class="game-results"><%= @cdsg.results.length.to_s %> / <%= @cdsg.data.length.to_s %></td>
-      </tr>
-    </table>
-  </div>
-
-  <p>
-    <%= form_with url: '/', method: :get do |form| %>
-      <%= form.hidden_field :quit, value: true %>
-      <%= form.submit "Quit Game" %>
-    <% end %>
-  </p>
 </div>
+<%= render 'game_footer' %>

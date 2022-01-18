@@ -28,6 +28,15 @@ class CDSG
     @config = @config || JSON.parse(File.read(File.join($cfg, 'config.json')))
     @config['game_modes'].each_key.to_a
   end
+  
+  def self.game_regions  ## nicely hashed list of regions
+    CDSG.regions.map do |r|
+      {
+        :title => r.split('_').map(&:capitalize).join(' '),
+        :region => r
+      }
+    end
+  end
 
   def match_guess(guess, answer)
     ## Needs improving to allow imperfect spelling!

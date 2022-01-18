@@ -1,0 +1,16 @@
+@import 'materialize-css/sass/components/color-variables';
+@import 'materialize-css/sass/components/icons-material-design';
+$primary-color: color('green', 'darken-3') !default;
+$secondary-color: color('materialize-red', 'darken-1') !default;
+
+@import 'materialize-css';
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}

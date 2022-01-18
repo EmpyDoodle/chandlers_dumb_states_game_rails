@@ -1,96 +1,80 @@
-<div class="page" align="center">
-  <h2>Game</h2>
-  <p>
-    <table border=1>
-      <tr>
-        <td class="game-mode">Region</td>
-        <td class="game-mode">
-          <%=
-            params[:region].to_s.split('_').map(&:capitalize).join(' ')
-          %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-mode">Capitals mode</td>
-        <td class="game-mode">
-          <%=
-            params[:capitals_mode].gsub('0', 'Off').gsub('1', 'On')
-          %>
-        </td>
-      </tr>
-      <tr>
-        <td class="game-mode">Hard mode</td>
-        <td class="game-mode">
-          <%=
-            params[:hard_mode].gsub('0', 'Off').gsub('1', 'On')
-          %>
-        </td>
-      </tr>
-    </table>
-  </p>
-  <p>
-    <hr />
-  </p>
-
-  <div class="game">
-   <p>&nbsp;</p>
-    <p>
-      <%= form_with url: '/game/guess', method: :get do |form| %>
-        <div class="form-row">
-          <%= form.text_field :guess, :autofocus => true %>
-          <%= form.hidden_field :region, value: params[:region] %>
-          <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
-          <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
-          <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
-          <%= form.submit 'Guess' %>
+<%= render 'game_header' %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="container">
+        <div class="section">
+          <%= render 'game_opts_table' %>
         </div>
-      <% end %>
-    </p>
-    <% if params[:hint] %>
-      <p>
-        <table class="game-results">
-          <tr>
-            <td class="game-results">Hint: <strong><%= params[:hint] %></td>
-          </tr>
-        </table>
-      </p>
-    <% end %>
-    <p>
-      <%= form_with url: '/game/hint', method: :get do |form| %>
-        <%= form.hidden_field :region, value: params[:region] %>
-        <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
-        <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
-        <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
-        <%= form.hidden_field :hint, value: true %>
-        <% hint_count = (params[:hint_count] ? params[:hint_count].to_i + 1 : 1) %>
-        <%= form.hidden_field :hint_count, value: hint_count.to_s %>
-        <%= form.submit "Hint #{hint_count.to_s}" %>
-      <% end %>
-    </p>
+        <div class="section center-align">
+          <%= form_with url: '/game/guess', method: :get do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Enter your guess..."
+                       class="validate"
+                       id="guess"
+                       name="guess"
+                       type="text"
+                       autocomplete="off"
+                       autofocus />
+                <label for="guess">Your Guess</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="container">
+                <%= form.hidden_field :region, value: params[:region] %>
+                <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+                <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
+                <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
+                <button class="btn waves-effect waves-light" type="submit" name="commit">
+                  <i class="material-icons right">send</i>Guess
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="section">
+          <div class="card horizontal green lighten-4">
+            <div class="card-content">
+              <% if params[:hint_count] %>
+                <span class="card-title">Hint <%= params[:hint_count].to_s %></span>
+              <% else %>
+                <span class="card-title">Hints</span>
+              <% end %>
+              <%= form_with url: '/game/hint', method: :get do |form| %>
+                <%= form.hidden_field :region, value: params[:region] %>
+                <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+                <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
+                <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
+                <%= form.hidden_field :hint, value: true %>
+                <% hint_count = (params[:hint_count] ? params[:hint_count].to_i + 1 : 1) %>
+                <%= form.hidden_field :hint_count, value: hint_count.to_s %>
+                <button class="btn-floating halfway-fab waves-effect waves-light" type="submit" name="quit">
+                  <i class="material-icons">quiz</i>
+                </button>
+                <% if params[:hint] %>
+                  <p>Hint: <strong><%= params[:hint] %></strong></p>
+                <% else %>
+                  <p>Click here to get a hint, up to 3 per answer!</p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="row center-align">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h5>Results <small>(<%= @cdsg.results.length.to_s %> / <%= @cdsg.data.length.to_s %>)</small></h5>
+          </li>
+          <% @cdsg.results.sort.each do |r| %>
+            <li class="collection-item"><%= r.to_s.chomp %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-  
-  <div class="game-results">
-    <table class="game-results">
-      <thead>
-        <th class="game-results">Results</th>
-      </thead>
-      <tr><td class="game-results"><hr /></td></tr>
-      <% @cdsg.results.sort.each do |r| %>
-        <tr>
-          <td class="game-results"><%= r.to_s.chomp %></td>
-        </tr>
-      <% end %>
-      <tr><td class="game-results"><hr /></td></tr>
-      <tr>
-        <td class="game-results"><%= @cdsg.results.length.to_s %> / <%= @cdsg.data.length.to_s %></td>
-      </tr>
-    </table>
-  </div>
-
-  <p>
-    <%= form_with url: '/', method: :get do |form| %>
-      <%= form.hidden_field :quit, value: true %>
-      <%= form.submit "Quit Game" %>
-    <% end %>
-  </p>
 </div>
+<%= render 'game_footer' %>
