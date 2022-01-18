@@ -1,41 +1,78 @@
-<div class="form">
-  <div class="container">
-    <div class="row">
-    <h5>Select your game options:</h5>
-    <div class="row">
-      <%= form_with url: 'game', method: :get do |form| %>
-        <div class="input-field col s12">
-          <div class="select-wrapper">
-        <%
-          game_regions = CDSG.regions.map do |r|
-            [r.split('_').map(&:capitalize).join(' '), r]
-          end
-        %>
-      <%= form.select :region, game_regions, selected: 'united_states' %>
-          </div>
-        <i class="material-icons">public</i><%= form.label :region, 'Region' %>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col s12 offset-s1">
+      <h5>Select your game options:</h5>
     </div>
-          <%= form.label :capitals_mode, 'Capitals mode' %>
-          <%= form.check_box :capitals_mode %>
-          <%= form.label :capitals_mode, '(where multiples, the official/administrative capital will be used)' %>
-          <%= form.label :hard_mode, 'Hard mode' %>
-          <%= form.check_box :hard_mode %>
-          <%= form.label :hard_mode, '(includes dependent territories with capitals or ISO3166 recognition)' %>
-          <%= form.submit 'Play' %>
-        <% end %>
-    </div>
-
-  <% if params[:quit] %>
-    <p>
-      <img alt="Chandler wins" src="https://media.giphy.com/media/NowSZPc9wYxBqXuSky/giphy.gif" />
-    </p>
-  <% end %>
-
+  </div>
 </div>
-  <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
-  </script>
+<div class="row">
+  <div class="col s12 m4 offset-m2 xl3 offset-xl3">
+    <%= form_with url: 'game', method: :get do |form| %>
+      <div class="row">
+        <div class="input-field">
+          <i class="material-icons prefix">public</i>
+          <div class="select-wrapper">
+            <select name="region" id="region">
+              <% CDSG.game_regions.each do |r| %>
+                <option value="<%= r[:region] %>"
+                        <%= 'selected' if r[:region] == 'united_states' %>>
+                  <%= r[:title] %>
+                </option>
+              <% end %>
+            </select>
+          </div>
+          <%= form.label :region, 'Region' %>
+        </div>
+      </div>
+      <div class="row center-align">
+        <div class="col s6">
+          <span>Capitals mode</span>
+          <a class="tooltipped"
+             data-position="bottom"
+             data-tooltip="Where there are multiple capitals, the official/administrative capital will be used">
+            <div class="switch">
+              <label>
+                Off
+                <%= form.check_box :capitals_mode %>
+                <span class="lever"></span>
+                On
+              </label>
+            </div>
+          </a>
+        </div>
+        <div class="col s6">
+            <span>Hard mode</span>
+            <a class="tooltipped"
+               data-position="bottom"
+               data-tooltip="Includes dependent territories with capitals or ISO3166 recognition">
+              <div class="switch">
+                <label>
+                  Off
+                  <%= form.check_box :hard_mode %>
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            </a>
+          </div>
+        </div>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <button class="btn waves-effect waves-light" type="submit">
+            <i class="material-icons right">videogame_asset</i>Play
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col s10 offset-s1 m6">
+    <% if params[:quit] %>
+      <div class="row center-align">
+        <img alt="Chandler wins"
+             class="responsive-img"
+             src="https://media.giphy.com/media/NowSZPc9wYxBqXuSky/giphy.gif" />
+      </div>
+    <% end %>
+  </div>
+</div>

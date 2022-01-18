@@ -1,15 +1,23 @@
-<div class="page" align="center">
-  <h2>Game Complete!</h2>
-  <p>
-    <% if params[:region] == 'celery' %>
-      <img src="https://media.giphy.com/media/3E7VSIvhqvMYkbwxVq/giphy.gif" alt="Bravo, you have the lead in... vegatables" />
-    <% else %>
-      <img alt="Way to go, champ!" src="https://media.giphy.com/media/IygGM8SXWLem8PkXIh/giphy.gif" />
-    <% end %>
-  </p>
-  <p>
-    <%= form_with url: '/', method: :get do |form| %>
-      <%= form.submit 'Play again' %>
-    <% end %>
-  </p>
+<div class="container">
+  <div class="col s12">
+    <div class="row center-align">
+      <h2>Game Complete!</h2>
+      <% if params[:region] == 'celery' %>
+        <img alt="Bravo, you have the lead in... vegatables"
+             class="responsive=img"
+             src="https://media.giphy.com/media/3E7VSIvhqvMYkbwxVq/giphy.gif" />
+      <% else %>
+        <img alt="Way to go, champ!"
+             class="responsive-img"
+             src="https://media.giphy.com/media/IygGM8SXWLem8PkXIh/giphy.gif" />
+      <% end %>
+    </div>
+    <div class="row center-align">
+      <%= form_with url: '/', method: :get do |form| %>
+        <button class="btn waves-effect waves-light" type="submit">
+          <i class="material-icons right">videogame_asset</i>Play again
+        </button>
+      <% end %>
+    </div>
+  </div>
 </div>

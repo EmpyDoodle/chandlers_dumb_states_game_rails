@@ -1,5 +1,6 @@
 @import 'materialize-css/sass/components/color-variables';
 @import 'materialize-css/sass/components/icons-material-design';
 $primary-color: color('green', 'darken-3') !default;
-$secondary-color: color('grey', 'lighten-1') !default;
+$secondary-color: color('materialize-red', 'darken-1') !default;
+
 @import 'materialize-css';
