@@ -1,0 +1,20 @@
+<table border=1>
+  <tr>
+    <td class="game-mode">Region</td>
+    <td class="game-mode">
+      <%= params[:region].to_s.split('_').map(&:capitalize).join(' ') %>
+    </td>
+  </tr>
+  <tr>
+    <td class="game-mode">Capitals mode</td>
+    <td class="game-mode">
+      <%= params[:capitals_mode].gsub('0', 'Off').gsub('1', 'On') %>
+    </td>
+  </tr>
+  <tr>
+    <td class="game-mode">Hard mode</td>
+    <td class="game-mode">
+    <%= params[:hard_mode].gsub('0', 'Off').gsub('1', 'On') %>
+    </td>
+  </tr>
+</table>

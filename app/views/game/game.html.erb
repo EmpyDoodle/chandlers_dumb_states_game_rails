@@ -1,65 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-      <h2>Game</h2>
-    </div>
-  </div>
-</div>
+<%= render 'game_header' %>
 <div class="container">
   <div class="row">
     <div class="col s12 m6">
       <div class="container">
         <div class="section">
-          <table border=1>
-            <tr>
-              <td class="game-mode">Region</td>
-              <td class="game-mode">
-                <%= params[:region].to_s.split('_').map(&:capitalize).join(' ') %>
-              </td>
-            </tr>
-            <tr>
-              <td class="game-mode">Capitals mode</td>
-              <td class="game-mode">
-                <%= params[:capitals_mode].gsub('0', 'Off').gsub('1', 'On') %>
-              </td>
-            </tr>
-            <tr>
-              <td class="game-mode">Hard mode</td>
-              <td class="game-mode">
-              <%= params[:hard_mode].gsub('0', 'Off').gsub('1', 'On') %>
-              </td>
-            </tr>
-          </table>
+          <%= render 'game_opts_table' %>
         </div>
         <div class="section center-align">
-            <%= form_with url: '/game/guess', method: :get do |form| %>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input placeholder="Enter your guess..."
-                         class="validate"
-                         id="guess"
-                         name="guess"
-                         type="text"
-                         autocomplete="off"
-                         autofocus />
-                  <label for="guess">Your Guess</label>
-                </div>
+          <%= form_with url: '/game/guess', method: :get do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Enter your guess..."
+                       class="validate"
+                       id="guess"
+                       name="guess"
+                       type="text"
+                       autocomplete="off"
+                       autofocus />
+                <label for="guess">Your Guess</label>
               </div>
-              <div class="row">
-                <div class="container">
-                  <%= form.hidden_field :region, value: params[:region] %>
-                  <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
-                  <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
-                  <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
-                  <button class="btn waves-effect waves-light" type="submit" name="commit">
-                    <i class="material-icons right">send</i>Guess
-                  </button>
-                </div>
+            </div>
+            <div class="row">
+              <div class="container">
+                <%= form.hidden_field :region, value: params[:region] %>
+                <%= form.hidden_field :capitals_mode, value: params[:capitals_mode] %>
+                <%= form.hidden_field :hard_mode, value: params[:hard_mode] %>
+                <%= form.hidden_field :results, value: @cdsg.results.join(',') %>
+                <button class="btn waves-effect waves-light" type="submit" name="commit">
+                  <i class="material-icons right">send</i>Guess
+                </button>
               </div>
-            <% end %>
+            </div>
+          <% end %>
         </div>
         <div class="section">
-          <div class="card horizontal">
+          <div class="card horizontal green lighten-4">
             <div class="card-content">
               <% if params[:hint_count] %>
                 <span class="card-title">Hint <%= params[:hint_count].to_s %></span>
@@ -82,9 +57,9 @@
                 <% else %>
                   <p>Click here to get a hint, up to 3 per answer!</p>
                 <% end %>
-              </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -102,17 +77,4 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-      <div class="row center-align">
-        <%= form_with url: '/', method: :get do |form| %>
-          <%= form.hidden_field :quit, value: true %>
-          <button class="btn waves-effect waves-light" type="submit" name="quit">
-            <i class="material-icons right">exit_to_app</i>Quit Game 
-          </button>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'game_footer' %>

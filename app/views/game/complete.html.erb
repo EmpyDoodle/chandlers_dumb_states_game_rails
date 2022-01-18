@@ -1,10 +1,14 @@
 <div class="container">
-  <div class="col s12">
-    <div class="row center-align">
+  <div class="row center-align">
+    <div class="col s12">
       <h2>Game Complete!</h2>
+    </div>
+  </div>
+  <div class="row center-align">
+    <div class="col s12">
       <% if params[:region] == 'celery' %>
         <img alt="Bravo, you have the lead in... vegatables"
-             class="responsive=img"
+             class="responsive-img"
              src="https://media.giphy.com/media/3E7VSIvhqvMYkbwxVq/giphy.gif" />
       <% else %>
         <img alt="Way to go, champ!"
@@ -12,7 +16,9 @@
              src="https://media.giphy.com/media/IygGM8SXWLem8PkXIh/giphy.gif" />
       <% end %>
     </div>
-    <div class="row center-align">
+  </div>
+  <div class="row center-align">
+    <div class="col s12">
       <%= form_with url: '/', method: :get do |form| %>
         <button class="btn waves-effect waves-light" type="submit">
           <i class="material-icons right">videogame_asset</i>Play again
