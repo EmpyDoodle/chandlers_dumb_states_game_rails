@@ -10,6 +10,7 @@ import "channels"
 
 import 'styles/styles'
 import 'materialize-css'
+import 'material-icons/iconfont/material-icons.css'
 
 Rails.start()
 Turbolinks.start()
